@@ -5,11 +5,17 @@ import './menu-list.scss';
 
 class MenuList extends Component {
 
+
+
     render() {
+        const menuListItem = this.props.state.map(item => {
+
+           return <MenuListItem key={item.id} state={item} handleId={this.props.handleId} />
+        })
 
         return (
             <ul className="menu__list">
-                <MenuListItem/>
+                {menuListItem}
             </ul>
         )
     }

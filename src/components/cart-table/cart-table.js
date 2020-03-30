@@ -1,17 +1,27 @@
 import React from 'react';
 import './cart-table.scss';
 
-const CartTable = () => {
+const CartTable = (props) => {
+
+  const cartItem = props.order.map((item, i) => {
+    return (
+      <div className="cart__item">
+        <img
+          src={item.url}
+          className="cart__item-img" alt="Cesar salad"></img>
+        <div className="cart__item-title">{item.title}</div>
+        <div className="cart__item-price">{item.price}</div>
+        <div onClick={() => props.handleDeleteOrder(i)} className="cart__close">&times;</div>
+      </div>
+    )
+  })
+
+
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
             <div className="cart__list">
-                <div className="cart__item">
-                    <img src="https://static.1000.menu/img/content/21458/-salat-cezar-s-kr-salat-cezar-s-krevetkami-s-maionezom_1501173720_1_max.jpg" className="cart__item-img" alt="Cesar salad"></img>
-                    <div className="cart__item-title">Cesar salad</div>
-                    <div className="cart__item-price">12$</div>
-                    <div className="cart__close">&times;</div>
-                </div>
+              {cartItem}
             </div>
         </>
     );

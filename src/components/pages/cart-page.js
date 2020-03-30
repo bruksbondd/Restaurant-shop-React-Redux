@@ -1,10 +1,10 @@
 import React from 'react';
 import CartTable from '../cart-table';
 
-const CartPage = () => {
+const CartPage = (props) => {
     return (
-        <div className="cart"> 
-            <CartTable/>
+        <div className="cart">
+            <CartTable order={props.order} handleDeleteOrder={props.handleDeleteOrder}/>
         </div>
     )
 }
